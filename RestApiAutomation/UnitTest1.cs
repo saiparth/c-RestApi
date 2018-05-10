@@ -24,7 +24,9 @@ namespace RestApiAutomation
 			var res = client.Execute(req);
 
 			var content = res.Content;
-			  Dictionary<string,string> holder=JsonConvert.DeserializeObject<Dictionary < string,string>> (content);
+			var status=res.ResponseStatus;
+			var statusCode = res.StatusCode;
+			Dictionary<string,string> holder=JsonConvert.DeserializeObject<Dictionary < string,string>> (content);
 
 		}
 		
@@ -42,8 +44,9 @@ namespace RestApiAutomation
 			var res = client.Execute(req);
 
 			var content = res.Content;
-			List<Dictionary<string, string>> holder = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(content);
-
+			List<Object> holder = JsonConvert.DeserializeObject<List<Object>>(content);
+			var child = holder[0];
+			
 		}
 	}
 }
